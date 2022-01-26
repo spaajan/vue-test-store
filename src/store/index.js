@@ -14,10 +14,10 @@ export default createStore({
       state.categories = categories
     },
     getProducts(state, products) {
-      state.products = products
+      state.products = products.sort(function(a, b) { return a.price - b.price })
     },
     getProductsByCategory(state, products) {
-      state.products = products
+      state.products = products.sort(function(a, b) { return a.price - b.price })
     },
     addToCart(state, product) {
       state.shoppingCart.push(product)
