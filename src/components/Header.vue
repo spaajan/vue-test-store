@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
+    <div class="container">
       <div class="navbar-header">
         <button
           type="button"
@@ -18,8 +18,8 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-            <li><router-link to="/">All products</router-link></li>
-            <li><router-link to="/about">About</router-link></li>
+            <li><router-link to="/">Products</router-link></li>
+            <li v-if="$store.state.shoppingCart.length"><a href="#"><i class="fas fa-shopping-cart"></i><sup> ({{ $store.getters.cartTotal }} €)</sup></a></li>
         </ul>
       </div>
     </div>
@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  Name: "Vue",
+  Name: "Header",
 };
 </script>
 
@@ -43,4 +43,5 @@ export default {
 .navbar-header button {
     border-color: white;
 }
+
 </style>

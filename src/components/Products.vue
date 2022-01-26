@@ -1,18 +1,19 @@
 <template>
-  <h3>Products</h3>
-  <div v-for="product in $store.state.products" :key="product.id">
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <img class="img img-responsive productImage" :src="product.image" />
-        </div>
+<div class="col-md-9 productContainer">
+  <h3>Products <small>({{ $store.getters.countProducts }})</small></h3>
+    <div v-for="product in $store.state.products" :key="product.id">
+      <div class="panel-default">
         <div class="panel-body">
-          <h4 class="productTitle">{{ product.title }}</h4>
-          <p class="productDesc">{{ product.description }}</p>
-          <p class="productPrice">{{ product.price }} €</p>
-        </div>
-        <div class="panel-footer">
-          <form @submit.prevent>
+          <div class="col-md-2">
+            <img class="img img-responsive productImage" :src="product.image" />
+          </div>
+          <div class="col-md-8">
+            <h4 class="productTitle">{{ product.title }}</h4>
+            <p class="productDesc">{{ product.description }}</p>
+          </div>
+          <div class="col-md-2">
+            <p class="productPrice">{{ product.price }} €</p>
+            <form @submit.prevent>
             <input
               class="btn btn-success"
               type="submit"
@@ -20,10 +21,12 @@
               @click="addToCart(product.id)"
             />
           </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+</div>
+  
 </template>
 
 <script>
@@ -46,20 +49,23 @@ export default {
   max-height: 200px;
   margin: 0 auto;
 }
+.productContainer {
+  border-left: 1px solid #777;
+  min-height: 100vh;
+}
 .productTitle {
-  min-height: 40px;
+
 }
 .productDesc {
-  min-height: 150px;
+
 }
 .productPrice {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
+  text-align: center;
 }
-.panel-body,
-.panel-heading,
-.panel-footer {
-  border: none !important;
-  background: white;
+form {
+  text-align: center;
 }
+
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="summary container">
+  <div class="body-content container">
     <h3>Summary</h3>
     <div class="row">
       <div class="panel panel-default">

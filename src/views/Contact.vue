@@ -1,5 +1,5 @@
 <template>
-  <div class="contact container">
+  <div class="body-content container">
     <h3>Enter contact details</h3>
     <!--TODO RAKENNA CONTACT NÄKYMÄ-->
     <form @submit.prevent>

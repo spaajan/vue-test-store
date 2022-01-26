@@ -4,12 +4,19 @@ import axios from 'axios'
 
 export default createStore({
   state: {
+    categories: [],
     products: [],
     shoppingCart: [],
     customerDetails: {}
   },
   mutations: {
+    getCategories(state, categories) {
+      state.categories = categories
+    },
     getProducts(state, products) {
+      state.products = products
+    },
+    getProductsByCategory(state, products) {
       state.products = products
     },
     addToCart(state, product) {
@@ -42,9 +49,19 @@ export default createStore({
     }
   },
   actions: {
+    getCategories({ commit }) {
+      axios('https://fakestoreapi.com/products/categories').then(response => {
+        commit('getCategories', response.data)
+      })
+    },
     getProducts({ commit }) {
-      axios('https://fakestoreapi.com/products?limit=5').then(response => {
+      axios('https://fakestoreapi.com/products').then(response => {
         commit('getProducts', response.data)
+      })
+    },
+    getProductsByCategory({ commit }, category) {
+      axios(`https://fakestoreapi.com/products/category/${category}`).then(response => {
+        commit('getProductsByCategory', response.data)
       })
     },
     addToCart({ commit }, id) {
@@ -69,6 +86,10 @@ export default createStore({
     }
   },
   getters: {
+      countProducts(state) {
+        var products = state.products
+        return products.length
+      },
       //Lasketaan koko ostoskorin arvo
       cartTotal(state) {
         var shoppingCart = state.shoppingCart

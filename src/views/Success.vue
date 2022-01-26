@@ -1,5 +1,5 @@
 <template>
-  <div class="success container">
+  <div class="body-content container">
     <h3>Thank you for your purchase</h3>
     <div v-if="showAlert" class="alert alert-success">
       <i class="fas fa-check"></i> Confirmation sent successfully!
